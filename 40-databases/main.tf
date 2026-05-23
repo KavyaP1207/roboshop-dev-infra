@@ -38,7 +38,7 @@ resource "terraform_data" "mongodb" {
   }
 }
 
-/* resource "aws_instance" "redis" {
+resource "aws_instance" "redis" {
   ami           = local.ami_id
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.redis_sg_id]
@@ -115,4 +115,3 @@ resource "terraform_data" "rabbitmq" {
      ]
   }
 }
- */
