@@ -1,0 +1,15 @@
+variable "project_name" {
+  default = "roboshop"
+}
+
+variable "environment" {
+  default = "dev"
+}
+
+variable "domain_name" {
+  default = "daws88s.sbs"
+}
+
+variable "zone_id" {
+  default = "Z073543635OD6ETLTDGO0"
+}
