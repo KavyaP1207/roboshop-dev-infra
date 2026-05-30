@@ -4,7 +4,7 @@ resource "aws_lb" "frontend_alb" {
   load_balancer_type = "application"
   security_groups    = [local.frontend_alb_sg_id]
   # it should be private subnet ids
-  subnets            = local.public_subnet_id
+  subnets            = local.public_subnet_ids
 
   enable_deletion_protection = false 
 
