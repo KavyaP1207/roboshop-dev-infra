@@ -40,7 +40,7 @@ resource "terraform_data" "catalogue" {
   }
 }
 
-
+# stop the instance to take image
 resource "aws_ec2_instance_state" "catalogue" {
   instance_id = aws_instance.catalogue.id
   state       = "stopped" # Change to "running" to start it back up
@@ -55,7 +55,7 @@ resource "aws_ami_from_instance" "catalogue" {
     tags = merge (
         local.common_tags,
         {
-            Name = "${local.common_name_suffix}-catalogue" # roboshop-dev-mongodb
+            Name = "${local.common_name_suffix}-catalogue-ami" # roboshop-dev-mongodb
         }
     )
 }
@@ -65,7 +65,8 @@ resource "aws_lb_target_group" "catalogue" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   = local.vpc_id
-  deregistration_delay = 60
+  deregistration_delay = 60 # waiting period before deleting the instance
+
   health_check {
     healthy_threshold = 2
     interval = 10
